@@ -48,10 +48,33 @@ class _Trangchu1State extends State<Trangchu1> {
                 icon_option(context,Icons.settings,"Cài đặt"),
                 icon_option(context,Icons.star_border,"Lựa chọn"),
 
+
               ],
             ),
            ),
-           
+           Padding(
+             padding: const EdgeInsets.all(8.0),
+             child: Container(
+              alignment: Alignment.topLeft,
+              child: Row(
+                children: [
+                  Text("Xin chào",style: TextStyle( ),),
+                  Text("Nguyễn Hữu Tùng",style: TextStyle(fontWeight: FontWeight.w500,color: Colors.white),),
+                ],
+              ),
+             ),
+           ),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Container(
+                height: 100,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(10),
+                  color: Colors.blue,
+                ),
+                
+              ),
+            )
           ],
         ),
       ),

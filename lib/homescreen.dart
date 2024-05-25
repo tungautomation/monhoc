@@ -1,5 +1,6 @@
 // ignore_for_file: non_constant_identifier_names, duplicate_ignore
 import 'package:app/information_firebase.dart';
+import 'package:app/read_data.dart';
 import 'package:app/tangchu1.dart';
 import 'package:app/trangchu.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -10,7 +11,7 @@ import 'package:app/dangki.dart';
 String usernameController = "";
 String passworkController = "";
 List<User> user_pass = [];
-
+String? name ;
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
   @override
@@ -20,8 +21,7 @@ class HomeScreen extends StatefulWidget {
 // ignore: duplicate_ignore
 class _HomeScreenState extends State<HomeScreen> {
   final _keyform = GlobalKey<FormState>();
-
-  fetRecord() async {
+fetRecord() async {
     final doc = await FirebaseFirestore.instance.collection('dangkitk').get();
     maprecord(doc);
   }
@@ -36,11 +36,12 @@ class _HomeScreenState extends State<HomeScreen> {
               password: thongtin['password'],
             ))
         .toList();
-
-    setState(() {
-      user_pass = list;
-    });
+        trave(list);
+    // setState(() {
+    //   user_pass = list;
+    // });
   }
+  
 
   @override
   Widget build(BuildContext context) {
@@ -132,12 +133,13 @@ class _HomeScreenState extends State<HomeScreen> {
                             if (isValueLogin) {
                               if (kDebugMode) {
                                 fetRecord();
+                                
                                 for (var i = 0; i < user_pass.length; i++) {
                                   if (usernameController ==
                                       user_pass[i].username){
                                     if (passworkController ==
                                         user_pass[i].password) {
-
+                                        name = "${user_pass[i].ho} ${user_pass[i].ten}";
                                       Navigator.push(
                                           context,
                                           MaterialPageRoute(
