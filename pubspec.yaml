@@ -38,6 +38,11 @@ dependencies:
   firebase_core: ^2.27.0
   cloud_firestore: ^4.15.8
   firebase_auth: ^4.17.8
+  firebase_storage: ^11.6.9
+  image_picker: ^1.0.8
+  shared_preferences: ^2.2.3
+
+  
 
 dev_dependencies:
   flutter_test:
@@ -66,6 +71,7 @@ flutter:
   - image/Subiz-cac-hinh-thuc-quang-cao-pho-bien.png
   - image/quang-cao.png
   - image/MyIC_Inline_74590.jpg
+  - image/images.png
 
   #   - images/a_dot_burr.jpeg
   #   - images/a_dot_ham.jpeg
