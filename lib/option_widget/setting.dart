@@ -1,9 +1,11 @@
-import 'package:app/homescreen.dart';
-import 'package:app/option_widget/help.dart';
-import 'package:app/option_widget/thongtinnguoidung.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+
+import 'package:app/homescreen.dart';
+import 'package:app/option_widget/help.dart';
+import 'package:app/option_widget/thongtinnguoidung.dart';
+import 'package:app/option_widget/xuco.dart';
 
 class Setting extends StatefulWidget {
   const Setting({super.key});
@@ -11,10 +13,16 @@ class Setting extends StatefulWidget {
   @override
   State<Setting> createState() => _SettingState();
 }
-
-class _SettingState extends State<Setting> {
-  final auth = FirebaseAuth.instance;
+String master = "";
+final auth = FirebaseAuth.instance;
   final app = FirebaseFirestore.instance;
+class _SettingState extends State<Setting> {
+  User? user = auth.currentUser;
+  @override
+  void initState() {
+    super.initState();
+    xuli();
+  }
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
@@ -28,6 +36,7 @@ class _SettingState extends State<Setting> {
             switch_setting(1, "Bảo mật"),
             switch_setting(2, "Trợ giúp"),
             option?switch_setting(3, "Sửa sản phẩm"):Container(),
+            user!.email == master ? switch_setting(7,"Xử lí sự cố"):Container(), 
             switch_setting(4, "Thời gian đăng nhập"),
             switch_setting(5, "Lịch sử đặt hàng"),
             switch_setting(6, "Đăng xuất"),
@@ -49,6 +58,7 @@ class _SettingState extends State<Setting> {
                 case 6:
                   logout();
                   break;
+                case 7: Navigator.push(context, MaterialPageRoute(builder: (context)=> const Xuco()));
                 default:
               }
             }, child: Text(label)),
@@ -76,5 +86,19 @@ class _SettingState extends State<Setting> {
                     child: const Text("Yes")),
               ],
             ));
+  }
+  Future<void> xuli()
+  async{
+    DocumentSnapshot laythongtin = await app.collection('master').doc('master').get();
+    if (laythongtin.exists) {
+        setState(() {
+          try {
+              master = laythongtin['master'];
+          // ignore: empty_catches
+          } catch (e) {
+            
+          }
+        });
+    }
   }
 }
