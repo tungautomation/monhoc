@@ -276,13 +276,13 @@ class _AddsanphamState extends State<Addsanpham> {
       final json = {
         name_sanpham.text.trim(): myMap,
       };
-      await app.collection('sanpham').doc(tk?.email).update(json);
+      await app.collection('sanpham').doc(tk.email).update(json);
       if (kDebugMode) {
         print(image_foodURl);
       }
       final shopping = {
         'cost':giathanh,
-        'email':tk?.email,
+        'email':tk.email,
         'name': name_sanpham.text.trim(),
         'image': image_foodURl,
         'mota': motasp.text.trim(),

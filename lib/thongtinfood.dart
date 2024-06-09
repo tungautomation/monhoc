@@ -1,9 +1,9 @@
-import 'package:app/option_widget/giohang.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
+import 'package:app/option_widget/giohang.dart';
 import 'package:app/option_widget/map_food.dart';
 
 // ignore: must_be_immutable
@@ -150,7 +150,7 @@ class _ThongtinFoodState extends State<ThongtinFood> {
                 GestureDetector(
                   onTap: ()
                   async{
-                    ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Đã thêm vào thư mục ")));
+                    ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text("Đã thêm vào thư mục ")));
                     final jsonk = {
                       'cost':mapfood.cost,
                       'image':mapfood.image,

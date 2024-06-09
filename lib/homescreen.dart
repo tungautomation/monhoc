@@ -10,7 +10,7 @@ bool option = false;
 List<Widget> trang = [
   const Datmon(),
   const Giohang(),
-  Setting(),
+  const Setting(),
 ];
 List<String> title = ["Đặt món", "Giỏ hàng", "Setting"];
 
@@ -29,6 +29,7 @@ class _HomeScreenState extends State<HomeScreen> {
   
   // ignore: non_constant_identifier_names
   int selection_slot = 0;
+  // ignore: non_constant_identifier_names
   bool delete_food = false;
   @override
   void initState() {
@@ -73,8 +74,8 @@ class _HomeScreenState extends State<HomeScreen> {
                     MaterialPageRoute(
                         builder: (context) => const Addsanpham()));
               },
-              icon: Icon(Icons.add),
-              label: Text("Thêm sản phẩm"))
+              icon: const Icon(Icons.add),
+              label: const Text("Thêm sản phẩm"))
           : Container(),
       bottomNavigationBar: BottomNavigationBar(
         elevation: 30,
