@@ -1,3 +1,4 @@
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -37,7 +38,6 @@ class _SettingState extends State<Setting> {
             switch_setting(2, "Trợ giúp"),
             option?switch_setting(3, "Sửa sản phẩm"):Container(),
             user!.email == master ? switch_setting(7,"Xử lí sự cố"):Container(), 
-            switch_setting(4, "Thời gian đăng nhập"),
             switch_setting(5, "Lịch sử đặt hàng"),
             switch_setting(6, "Đăng xuất"),
           ],   
